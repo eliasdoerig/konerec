@@ -16,12 +16,17 @@ export default function PageTeam({ team }) {
         </a>
       </Link>
       <div className="content">
-        <img src="" />
         <ul className="team">
           {team.map((member, i) => {
             return (
               <li key={`member-${i}`}>
-                <img src={`${member.image}?fm=webp&w=600&h=600`} />
+                <img
+                  src={`${member.image.url}?fm=webp&w=400&h=400`}
+                  title={member.image.title}
+                  alt={member.image.alt}
+                  width={400}
+                  height={400}
+                />
                 <div className="details">
                   <h2>{member.name}</h2>
                   <p>{member.description}</p>

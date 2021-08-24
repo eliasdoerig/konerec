@@ -20,9 +20,11 @@ export default function PlayerCD({ trackCover, isPlaying }) {
       </div>
       <div ref={songCover} className="song-cover">
         <img
-          src={`${trackCover.url}?fm=webp`}
+          src={`${trackCover.url}?fm=webp&w=1000&h=1000`}
           title={trackCover.title}
           alt={trackCover.alt}
+          height={1000}
+          width={1000}
           loading="lazy"
         />
       </div>

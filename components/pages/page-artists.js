@@ -16,7 +16,13 @@ function Artist({
   return (
     <li className="artist">
       <div className="image">
-        <img src={`${image}?fm=webp&fit=fill&w=400&h=600`} />
+        <img
+          src={`${image.url}?fm=webp&fit=fill&w=400&h=600`}
+          //title={image.title}
+          //alt={image.alt}
+          width={400}
+          height={600}
+        />
       </div>
       <div className="details">
         <h2>{name}</h2>
@@ -50,6 +56,8 @@ function Artist({
                   src={`${release.cover.url}?fm=webp&w=100&h=100`}
                   title={release.cover.title}
                   alt={release.cover.alt}
+                  width={100}
+                  height={100}
                   loading="lazy"
                 />
               </li>

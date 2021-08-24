@@ -16,7 +16,7 @@ import PlayerCD from "../components/player/playerCD";
 import Player from "../components/player/player";
 
 export default function Index({ artists, tracks, team }) {
-  console.log(tracks);
+  console.log("artits", artists);
   //page title
   const [currentTitle, setCurrentTitle] = useState("");
 
@@ -153,7 +153,11 @@ export async function getStaticProps({ params }) {
       id: artist.sys.id,
       name: artist.fields.name,
       description: artist.fields.description,
-      image: artist.fields.thumbnail.fields.file.url,
+      image: {
+        url: artist.fields.thumbnail.fields.file.url,
+        title: artist.fields.thumbnail.fields.title || artist.fields.name,
+        alt: artist.fields.thumbnail.fields.description || "",
+      },
       links: [{ title: "Bandcamp", url: "#" }],
     };
   });
@@ -171,8 +175,8 @@ export async function getStaticProps({ params }) {
       image: track.fields.cover,
       cover: {
         url: track.fields.cover.fields.file.url,
-        title: track.fields.cover.fields.title,
-        alt: track.fields.cover.fields.description,
+        title: track.fields.cover.fields.title || track.fields.title,
+        alt: track.fields.cover.fields.description || "",
       },
       description: track.fields.description,
       lyrics: track.fields.lyrics,
@@ -187,7 +191,11 @@ export async function getStaticProps({ params }) {
     return {
       name: member.fields.name,
       description: member.fields.description,
-      image: member.fields.thumbnail.fields.file.url,
+      image: {
+        url: member.fields.thumbnail.fields.file.url,
+        title: member.fields.thumbnail.fields.title || member.fields.name,
+        alt: member.fields.thumbnail.fields.description || "",
+      },
     };
   });
 

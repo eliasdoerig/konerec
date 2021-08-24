@@ -77,7 +77,7 @@ export default function Player({
             </ul>
           </div>
           <div className="lyrics">
-            <h3>Lyrics</h3>
+            <h2>Lyrics</h2>
             <p>{lyrics}</p>
           </div>
         </div>
@@ -100,6 +100,8 @@ export default function Player({
                     src={`${track.cover.url}?fm=webp&w=100&h=100`}
                     title={track.cover.title}
                     alt={track.cover.alt}
+                    width={100}
+                    height={100}
                     loading="lazy"
                   />
                 </li>

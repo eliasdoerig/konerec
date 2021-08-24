@@ -82,8 +82,8 @@ export default function Player({
           </div>
         </div>
         <div className="latest-release">
+          <h3>Latest Releases</h3>
           <ul className="releases">
-            <h3>Latest Releases</h3>
             {tracks.map((track, i) => {
               const isCurrent = track.id === tracks[trackIndex].id;
               return (

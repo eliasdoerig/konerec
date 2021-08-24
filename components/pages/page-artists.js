@@ -18,8 +18,8 @@ function Artist({
       <div className="image">
         <img
           src={`${image.url}?fm=webp&fit=fill&w=400&h=600`}
-          //title={image.title}
-          //alt={image.alt}
+          title={image.title}
+          alt={image.alt}
           width={400}
           height={600}
         />
@@ -38,8 +38,8 @@ function Artist({
           })}
         </ul>
         <p className="description">{description}</p>
+        <h3>Releases</h3>
         <ul className="releases">
-          <h3>Releases</h3>
           {releases.map((release, i) => {
             const isCurrent = release.id === tracks[trackIndex].id;
             return (

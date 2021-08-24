@@ -1,0 +1,187 @@
+$gutter: 20px;
+$player-height: 60px;
+
+:root {
+  --bg: #000;
+  --primary: #fff;
+  --light: #fff;
+  --gray: #999;
+  --line: #ddd;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: futura-pt, Helvetica, sans-serif;
+  font-size: 100%; //16px
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+}
+
+html,
+body,
+body > #__next {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--light);
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1 {
+  font-size: 1.618rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+h2,
+h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: $gutter;
+  margin: 0;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: $gutter;
+  margin: 0;
+}
+
+p + * {
+  margin-top: 1rem;
+}
+
+.big {
+  font-size: 1.2rem;
+}
+
+button,
+.button {
+  padding: 0.25rem;
+  border: solid 1px var(--line);
+  background: var(--bg);
+  color: var(--light);
+  text-decoration: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  &:hover {
+    background: var(--light);
+    color: var(--bg);
+  }
+}
+
+.song-button {
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  position: relative;
+  &:hover::after,
+  &.current::after {
+    content: "Play";
+    position: absolute;
+    display: block;
+    height: 80%;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0;
+    background: url("/icons/play.svg") no-repeat;
+    background-position: center;
+    color: var(--light);
+  }
+  &.current:hover::after {
+    background-image: url("/icons/pause.svg");
+  }
+  &.current.pause:hover::after {
+    background-image: url("/icons/play.svg");
+  }
+}
+
+.song-button img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.song-button.current img,
+.song-button:hover img {
+  opacity: 0.5;
+}
+
+//lists
+ul {
+  margin: 0;
+  padding: 0;
+}
+* + ul.links {
+  margin: 1rem 0 1.5rem;
+}
+ul.links li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+* + ul.releases {
+  margin: 1rem 0 1.5rem;
+}
+ul.releases h3 {
+  margin: 0 0 0.75rem;
+}
+ul.releases li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+//forms
+input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: block;
+  padding: 0.5rem 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: var(--light);
+  background: var(--bg);
+  border: solid 1px var(--line);
+  &:focus {
+    border: solid 1px var(--light);
+    outline: 0;
+  }
+}
+
+main > .main-top {
+  width: 100%;
+  flex: 1;
+  display: flex;
+}
+main > .main-bottom {
+  width: 100%;
+}

@@ -1,0 +1,78 @@
+.pages {
+  position: fixed;
+  display: flex;
+  width: auto;
+  max-width: 80vw;
+  height: calc(100% - #{$player-height});
+  top: 0;
+  right: 0;
+  @media screen and (min-width: 768px) {
+    max-width: 50%;
+  }
+}
+
+section.page {
+  display: flex;
+  position: relative;
+  padding-left: 42px;
+  background: var(--bg);
+  transition: 0.25s;
+  &:not(.open):hover {
+    cursor: pointer;
+    transform-origin: 0 100%;
+    transform: translateX(-0.5rem);
+  }
+  box-shadow: 2rem 0 0 var(--bg);
+  //head with title
+  a.head {
+    border-left: solid 1px var(--line);
+    height: 100%;
+    width: auto;
+    min-width: 100px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--light);
+    h1 {
+      font-size: 1.618rem;
+      position: absolute;
+      top: -10px;
+      left: 7px;
+      white-space: nowrap;
+      transform: rotate(90deg);
+      transform-origin: 0 100%;
+      margin: 0;
+      span {
+        display: block;
+        transform: rotate(180deg);
+      }
+    }
+  }
+  //content
+  .content {
+    width: 0;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    transition: 1s width;
+    & > * {
+      opacity: 0;
+      transition: 0.5s opacity;
+      transition-delay: 0.25s;
+    }
+  }
+  //open content
+  &.open .content {
+    width: auto;
+    overflow-y: scroll;
+    padding: 15px 0 $gutter 2rem;
+    & > * {
+      opacity: 1;
+      padding: 0 $gutter 0 0;
+    }
+  }
+  .max-width {
+    max-width: 400px;
+  }
+}

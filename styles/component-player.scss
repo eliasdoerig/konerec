@@ -1,0 +1,114 @@
+section#player {
+  position: fixed;
+  transition: 1s;
+  top: calc(100% - #{$player-height});
+  left: 0;
+  width: 100%;
+  padding: 0;
+  background: var(--bg);
+  overflow-y: scroll;
+  &.open {
+    box-shadow: 0 0 300px var(--light);
+    top: 25%;
+    @media screen and (min-width: 768px) {
+      top: 50%;
+    }
+  }
+  .player-top {
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    height: $player-height + 1;
+    display: flex;
+    align-items: center;
+    padding: 0 $gutter 2px;
+    border-top: solid 1px var(--line);
+    border-bottom: solid 1px var(--line);
+    background: var(--bg);
+    #playpause {
+      font-size: 0;
+      border: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 0;
+      &.play {
+        background: url("/icons/play.svg") no-repeat;
+      }
+      &.pause {
+        background: url("/icons/pause.svg") no-repeat;
+      }
+    }
+    .song {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-bottom: 0.15rem;
+      cursor: pointer;
+      .song-title {
+        font-weight: 800;
+        margin-left: 0.5rem;
+      }
+      .band-name {
+        margin-left: 0.5rem;
+        color: var(--gray);
+        letter-spacing: 0.05ch;
+      }
+    }
+    .song-wave {
+      flex: 1;
+      height: 100%;
+      canvas {
+        padding: 0 20px;
+      }
+    }
+    #prev {
+      background: url("/icons/prev.svg") no-repeat;
+      font-size: 0;
+      border: 0;
+      border-radius: 0;
+      width: 24px;
+      height: 24px;
+      margin-right: 0.5rem;
+    }
+    #next {
+      background: url("/icons/next.svg") no-repeat;
+      font-size: 0;
+      border: 0;
+      border-radius: 0;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .player-bottom {
+    display: flex;
+    flex-direction: column;
+    height: calc(75vh - #{$player-height});
+    @media screen and (min-width: 768px) {
+      height: calc(50vh - #{$player-height});
+    }
+    .song-details {
+      display: flex;
+      flex-direction: column;
+      padding: $gutter;
+      flex: 1;
+      @media screen and (min-width: 768px) {
+        flex-direction: row;
+        .description {
+          width: 25%;
+          margin-right: $gutter;
+        }
+        .lyrics {
+          width: 50%;
+        }
+      }
+    }
+    .latest-release {
+      position: sticky;
+      bottom: 0;
+      border-top: solid 1px var(--line);
+      padding: 1rem $gutter $gutter;
+      background: var(--bg);
+    }
+  }
+}

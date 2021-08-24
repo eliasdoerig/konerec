@@ -1,0 +1,18 @@
+footer {
+  border-left: solid 1px var(--line);
+  padding: $gutter;
+  position: relative;
+  height: 100%;
+  width: auto;
+  .copyright {
+    position: absolute;
+    white-space: nowrap;
+    bottom: $gutter;
+    left: 0;
+    span {
+      display: block;
+      transform-origin: 0.75rem 0;
+      transform: rotate(-90deg);
+    }
+  }
+}

@@ -6,8 +6,10 @@
   height: calc(100% - #{$player-height});
   top: 0;
   right: 0;
+  flex-wrap: nowrap;
   @media screen and (min-width: 768px) {
     max-width: 50%;
+    flex-wrap: auto;
   }
 }
 
@@ -17,10 +19,12 @@ section.page {
   padding-left: 42px;
   background: var(--bg);
   transition: 0.25s;
-  &:not(.open):hover {
-    cursor: pointer;
-    transform-origin: 0 100%;
-    transform: translateX(-0.5rem);
+  @media (hover: hover) {
+    &:not(.open):hover {
+      cursor: pointer;
+      transform-origin: 0 100%;
+      transform: translateX(-0.5rem);
+    }
   }
   box-shadow: 2rem 0 0 var(--bg);
   //head with title
@@ -53,13 +57,17 @@ section.page {
   .content {
     width: 0;
     height: 100%;
-    padding: 0;
-    overflow: hidden;
+    width: auto;
+    overflow-y: scroll;
     transition: 1s width;
     & > * {
       opacity: 0;
       transition: 0.5s opacity;
       transition-delay: 0.25s;
+    }
+    @media screen and (min-width: 768px) {
+      width: 0;
+      overflow: hidden;
     }
   }
   //open content

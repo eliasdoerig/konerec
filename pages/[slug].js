@@ -21,7 +21,7 @@ export default function Index({ artists, tracks, team }) {
   const [currentTitle, setCurrentTitle] = useState("");
 
   //Audio player
-  const audioRef = useRef("");
+  const audioRef = useRef(null);
   const [trackIndex, setTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 

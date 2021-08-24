@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import PlayerHeader from "./playerHeader";
 
 export default function Player({
@@ -27,8 +27,10 @@ export default function Player({
     loadAudio(audioSrc);
   }, []);
 
-  useEffect(() => {
-    audioRef.current.pause();
+  useLayoutEffect(() => {
+    if (audioRef.current !== null) {
+      audioControls.pause();
+    }
     loadAudio(audioSrc);
     if (isReady.current) {
       audioControls.play();

@@ -37,11 +37,16 @@ body {
   color: var(--light);
 }
 
-main {
-  width: 100%;
-  height: 100%;
+//layout
+.main-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: $player-height;
 }
 
+//elements
 img {
   max-width: 100%;
   height: auto;
@@ -175,13 +180,4 @@ input {
     border: solid 1px var(--light);
     outline: 0;
   }
-}
-
-main > .main-top {
-  width: 100%;
-  flex: 1;
-  display: flex;
-}
-main > .main-bottom {
-  width: 100%;
 }

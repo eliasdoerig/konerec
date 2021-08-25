@@ -25,7 +25,9 @@ section#page-artists {
     .details {
       padding: 0 0.5rem 0 0;
     }
-    @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 768px) {
+    .artist {
       flex-direction: row;
       .image {
         padding: 0;

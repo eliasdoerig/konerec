@@ -15,8 +15,8 @@ const words = ["record", "gives a fuck", "knows", "works"];
 import PlayerCD from "../components/player/playerCD";
 import Player from "../components/player/player";
 
-export default function Index({ artists, tracks, team }) {
-  console.log("artits", artists);
+export default function Index({ pages, artists, tracks, team }) {
+  console.log("pages", pages);
   //page title
   const [currentTitle, setCurrentTitle] = useState("");
 
@@ -85,22 +85,23 @@ export default function Index({ artists, tracks, team }) {
             isPlaying={isPlaying}
             toIdTrack={audioControls.toIdTrack}
             trackIndex={trackIndex}
+            content={pages.find((page) => page.slug === "artists")}
           />
-          <PageAbout />
+          <PageAbout content={pages.find((page) => page.slug === "about")} />
           <PageTeam team={team} />
-          <PageMailing />
+          <PageMailing
+            content={pages.find((page) => page.slug === "mailing")}
+          />
         </div>
       </div>
-      <div className="main-bottom">
-        <Player
-          tracks={tracks}
-          trackIndex={trackIndex}
-          isPlaying={isPlaying}
-          setTrackIndex={setTrackIndex}
-          audioControls={audioControls}
-          audioRef={audioRef}
-        />
-      </div>
+      <Player
+        tracks={tracks}
+        trackIndex={trackIndex}
+        isPlaying={isPlaying}
+        setTrackIndex={setTrackIndex}
+        audioControls={audioControls}
+        audioRef={audioRef}
+      />
     </div>
   );
 }
@@ -144,6 +145,19 @@ export async function getStaticProps({ params }) {
   const res = await client.getEntries({
     content_type: ["page", "tracks", "artists", "team"],
   });
+  //PAGES
+  const pagesRaw = res.items.filter(
+    (item) => item.sys.contentType.sys.id == "page"
+  );
+  const pages = pagesRaw.map((page) => {
+    return {
+      id: page.sys.id,
+      slug: page.fields.slug,
+      title: page.fields.title || "title",
+      intro: page.fields.intro || "",
+      text: page.fields.text || null,
+    };
+  });
   //ARTISTS
   const artistsRaw = res.items.filter(
     (item) => item.sys.contentType.sys.id == "artists"
@@ -172,7 +186,6 @@ export async function getStaticProps({ params }) {
       title: track.fields.title,
       artist: track.fields.artist.fields.name,
       audioSrc: track.fields.audio.fields.file.url,
-      image: track.fields.cover,
       cover: {
         url: track.fields.cover.fields.file.url,
         title: track.fields.cover.fields.title || track.fields.title,
@@ -196,11 +209,14 @@ export async function getStaticProps({ params }) {
         title: member.fields.thumbnail.fields.title || member.fields.name,
         alt: member.fields.thumbnail.fields.description || "",
       },
+      email: member.fields.email || null,
+      website: member.fields.website || null,
     };
   });
 
   return {
     props: {
+      pages: pages,
       artists: artists,
       tracks: tracks,
       team: team,

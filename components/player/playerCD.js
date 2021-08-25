@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function PlayerCD({ trackCover, isPlaying }) {
   const songCover = useRef(null);
@@ -15,17 +17,18 @@ export default function PlayerCD({ trackCover, isPlaying }) {
     <section id="page-player" className="">
       <div className="title">
         <h1>
-          <span>Know 1 record</span>
+          <Link href="/" shallow>
+            <span>Know 1 record</span>
+          </Link>
         </h1>
       </div>
       <div ref={songCover} className="song-cover">
-        <img
-          src={`${trackCover.url}?fm=webp&w=1000&h=1000`}
+        <Image
+          src={`https:${trackCover.url}?fm=webp&w=1000&h=1000&q=70`}
           title={trackCover.title}
           alt={trackCover.alt}
           height={1000}
           width={1000}
-          loading="lazy"
         />
       </div>
     </section>

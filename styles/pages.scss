@@ -2,15 +2,10 @@
   position: fixed;
   display: flex;
   width: auto;
-  max-width: 80vw;
-  height: calc(100% - #{$player-height});
-  top: 0;
+  max-width: calc(100vw - 45px);
   right: 0;
-  flex-wrap: nowrap;
-  @media screen and (min-width: 768px) {
-    max-width: 50%;
-    flex-wrap: auto;
-  }
+  top: 0;
+  bottom: $player-height;
 }
 
 section.page {
@@ -19,14 +14,8 @@ section.page {
   padding-left: 42px;
   background: var(--bg);
   transition: 0.25s;
-  @media (hover: hover) {
-    &:not(.open):hover {
-      cursor: pointer;
-      transform-origin: 0 100%;
-      transform: translateX(-0.5rem);
-    }
-  }
   box-shadow: 2rem 0 0 var(--bg);
+  max-width: 800px;
   //head with title
   a.head {
     border-left: solid 1px var(--line);
@@ -55,32 +44,44 @@ section.page {
   }
   //content
   .content {
-    width: 0;
-    height: 100%;
     width: auto;
+    height: 100%;
     overflow-y: scroll;
-    transition: 1s width;
-    & > * {
-      opacity: 0;
-      transition: 0.5s opacity;
-      transition-delay: 0.25s;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  section.page {
+    @media (hover: hover) {
+      &:not(.open):hover {
+        cursor: pointer;
+        transform-origin: 0 100%;
+        transform: translateX(-0.5rem);
+      }
     }
-    @media screen and (min-width: 768px) {
+    .content {
       width: 0;
       overflow: hidden;
+      & > * {
+        opacity: 0;
+        transition: 0.5s opacity;
+        transition-delay: 0.25s;
+      }
+    }
+    &.open .content {
+      width: auto;
+      overflow-y: scroll;
+      padding: 15px 0 $gutter 2rem;
+      & > * {
+        opacity: 1;
+        padding: 0 $gutter 0 0;
+      }
     }
   }
-  //open content
-  &.open .content {
-    width: auto;
-    overflow-y: scroll;
-    padding: 15px 0 $gutter 2rem;
-    & > * {
-      opacity: 1;
-      padding: 0 $gutter 0 0;
-    }
-  }
-  .max-width {
-    max-width: 400px;
+}
+
+@media screen and (min-width: 1024px) {
+  .pages {
+    max-width: 50vw;
   }
 }

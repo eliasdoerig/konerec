@@ -7,8 +7,8 @@ section#page-team {
       border-top: solid 1px var(--line);
       padding-top: 0.5rem;
       margin-bottom: 0;
-      img {
-        max-width: 200px;
+      .image {
+        width: 200px;
         object-fit: contain;
         object-position: top;
         padding-bottom: 0.5rem;
@@ -22,7 +22,7 @@ section#page-team {
     ul.team li {
       flex-direction: row;
       margin-bottom: 2rem;
-      img {
+      .image {
         padding-right: 1rem;
       }
     }

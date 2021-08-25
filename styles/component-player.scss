@@ -1,12 +1,12 @@
 section#player {
   position: fixed;
-  transition: 1s;
   top: calc(100% - #{$player-height});
   left: 0;
-  width: 100%;
+  right: 0;
   padding: 0;
   background: var(--bg);
   overflow-y: scroll;
+  transition: 1s;
   &.open {
     box-shadow: 0 0 300px var(--light);
     top: 25%;

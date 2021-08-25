@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 
 function Artist({
   id,
@@ -16,12 +17,13 @@ function Artist({
   return (
     <li className="artist">
       <div className="image">
-        <img
-          src={`${image.url}?fm=webp&fit=fill&w=400&h=600`}
+        <Image
+          src={`https:${image.url}?fm=webp&fit=fill&w=400&h=600&q=75`}
           title={image.title}
           alt={image.alt}
           width={400}
           height={600}
+          layout="responsive"
         />
       </div>
       <div className="details">
@@ -75,26 +77,22 @@ export default function PageArtists({
   isPlaying,
   toIdTrack,
   trackIndex,
+  content,
 }) {
   const router = useRouter();
   const slug = "artists";
   const isCurrent = router.query.slug === slug;
-
   return (
     <section id="page-artists" className={`page ${isCurrent ? "open" : ""}`}>
       <Link href={isCurrent ? "/" : `/${slug}`} shallow>
         <a className="head">
           <h1>
-            <span>Know 1 knows</span>
+            <span>{content.title}</span>
           </h1>
         </a>
       </Link>
       <div className="content">
-        <p className="big">
-          Our artists wish to remain anonymous and they don’t play live. <br />
-          So… if you like the music… please be generous on bandcamp and with
-          airplays if you’re a broadcaster.
-        </p>
+        <p className="big">{content.intro}</p>
         <ul className="artists">
           {artists.map((artist, i) => {
             return (

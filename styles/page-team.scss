@@ -1,7 +1,7 @@
 section#page-team {
   ul.team {
     list-style-type: none;
-    > li {
+    & > li {
       display: flex;
       flex-direction: column;
       border-top: solid 1px var(--line);
@@ -19,7 +19,7 @@ section#page-team {
     }
   }
   @media screen and (min-width: 1113px) {
-    ul.team li {
+    ul.team > li {
       flex-direction: row;
       margin-bottom: 2rem;
       .image {

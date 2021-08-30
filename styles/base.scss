@@ -22,6 +22,7 @@ html {
   font-weight: 400;
   font-style: normal;
   line-height: 1;
+  text-rendering: optimizeLegibility;
 }
 
 html,
@@ -69,6 +70,7 @@ img {
 //tipography
 h1 {
   font-size: 1.3rem;
+  line-height: 1.2;
   font-weight: 700;
   margin: 0;
 }
@@ -86,6 +88,7 @@ p {
   font-weight: 400;
   line-height: $gutter;
   margin: 0;
+  letter-spacing: 0.01ch;
 }
 
 p + * {
@@ -104,10 +107,21 @@ p + * {
   }
 }
 
+//link
+a {
+  color: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
 //lists
 ul {
   margin: 0;
   padding: 0;
+}
+li {
+  font-size: 1rem;
+  letter-spacing: 0.01ch;
 }
 //links
 * + ul.links {
@@ -116,7 +130,7 @@ ul {
 ul.links li {
   list-style-type: none;
   display: inline-block;
-  margin-right: 0.5rem;
+  margin: 0 0.5rem 0 0;
 }
 //releases
 * + ul.releases {
@@ -201,6 +215,7 @@ input {
   color: var(--light);
   background: var(--bg);
   border: solid 1px var(--line);
+  border-radius: 0;
   &:focus {
     border: solid 1px var(--light);
     outline: 0;

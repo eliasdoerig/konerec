@@ -5,7 +5,7 @@ section#player {
   right: 0;
   padding: 0;
   background: var(--bg);
-  overflow-y: scroll;
+  overflow-y: visible;
   transition: 1s;
   &.open {
     box-shadow: 0 0 300px var(--light);
@@ -13,6 +13,14 @@ section#player {
     @media screen and (min-width: 768px) {
       top: 50%;
     }
+  }
+  #progressBar {
+    position: absolute;
+    top: -4px;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: var(--primary);
   }
   .player-top {
     cursor: pointer;
@@ -25,6 +33,7 @@ section#player {
     border-top: solid 1px var(--line);
     border-bottom: solid 1px var(--line);
     background: var(--bg);
+    overflow: visible;
     #playpause {
       font-size: 0;
       border: 0;

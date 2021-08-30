@@ -10,7 +10,6 @@
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
-  white-space: nowrap;
 }
 
 @media screen and (min-width: 768px) {
@@ -21,7 +20,11 @@
     max-width: calc(100vw - 45px);
     right: 0;
     top: 0;
+    left: auto;
     bottom: $player-height;
+    padding-left: 0;
+    overflow: visible;
+    white-space: normal;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -43,9 +46,11 @@ section.page {
   box-shadow: 2rem 0 0 var(--bg);
   overflow-x: hidden;
   overflow-y: scroll;
-  &:last-child {
-    left: -100vw;
-    width: 100vw;
+  @media screen and (max-width: 767px) {
+    &:last-child {
+      left: -100vw;
+      width: 100vw;
+    }
   }
   //head with title
   a.head {
@@ -85,6 +90,7 @@ section.page {
 @media screen and (min-width: 768px) {
   section.page {
     display: flex;
+    left: auto;
     width: auto;
     max-width: 800px;
     @media (hover: hover) {

@@ -9,13 +9,19 @@ export default function Player({
   audioControls,
   audioRef,
 }) {
+  //states
   const [isOpen, toggle] = useState(false);
+
+  //references
+  const progressBar = useRef(null);
+  const animationRef = useRef();
   const isReady = useRef(false);
 
   // Destructure for conciseness
   const track = tracks[trackIndex];
   const { audioSrc, description, lyrics, links } = track;
 
+  // Functions
   const loadAudio = (audioSrc) => {
     audioRef.current = new Audio(audioSrc);
     audioRef.current.setAttribute("preload", "metadata");
@@ -24,10 +30,39 @@ export default function Player({
     });
   };
 
+  const animation = () => {
+    progressBar.current.style.width = `${
+      (audioRef.current.currentTime * 100) / audioRef.current.duration
+    }%`;
+    requestAnimationFrame(animation);
+  };
+
+  //Mount
   useEffect(() => {
     loadAudio(audioSrc);
+
+    // Pause and clean on unmount
+    return () => {
+      audioRef.current.pause();
+      audioRef.current.removeEventListener("ended", () => {
+        audioControls.toNextTrack();
+      });
+      cancelAnimationFrame(animationRef.current);
+    };
   }, []);
 
+  //progress bar animation
+  useEffect(() => {
+    if (isPlaying) {
+      animationRef.current = requestAnimationFrame(animation);
+      console.log("startani");
+    } else {
+      cancelAnimationFrame(animationRef.current);
+      console.log("stopani");
+    }
+  }, [isPlaying, isReady]);
+
+  //change track
   useLayoutEffect(() => {
     if (audioRef.current !== null) {
       audioControls.pause();
@@ -40,18 +75,9 @@ export default function Player({
     }
   }, [trackIndex]);
 
-  useEffect(() => {
-    // Pause and clean on unmount
-    return () => {
-      audioRef.current.pause();
-      audioRef.current.removeEventListener("ended", () => {
-        audioControls.toNextTrack();
-      });
-    };
-  }, []);
-
   return (
     <section id="player" className={isOpen ? "open" : ""}>
+      <div ref={progressBar} id="progressBar"></div>
       <div className="player-top">
         <PlayerHeader
           isOpen={isOpen}

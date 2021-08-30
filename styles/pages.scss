@@ -1,21 +1,48 @@
 .pages {
   position: fixed;
-  display: flex;
-  width: auto;
-  max-width: calc(100vw - 45px);
+  width: 100%;
+  height: calc(100% - #{$player-height});
+  padding-left: 95vw;
   right: 0;
   top: 0;
-  bottom: $player-height;
+  left: 0;
+  bottom: calc(100% - #{$player-height});
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 768px) {
+  .pages {
+    position: fixed;
+    display: flex;
+    width: auto;
+    max-width: calc(100vw - 45px);
+    right: 0;
+    top: 0;
+    bottom: $player-height;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .pages {
+    max-width: 50vw;
+  }
 }
 
 section.page {
-  display: flex;
-  position: relative;
+  position: sticky;
+  left: -95vw;
+  display: inline-flex;
+  vertical-align: top;
+  width: 95vw;
+  height: 100%;
   padding-left: 42px;
-  background: var(--bg);
   transition: 0.25s;
+  background: var(--bg);
   box-shadow: 2rem 0 0 var(--bg);
-  max-width: 800px;
+  overflow-x: hidden;
+  overflow-y: scroll;
   //head with title
   a.head {
     border-left: solid 1px var(--line);
@@ -28,7 +55,6 @@ section.page {
     left: 0;
     color: var(--light);
     h1 {
-      font-size: 1.618rem;
       position: absolute;
       top: -10px;
       left: 7px;
@@ -47,11 +73,16 @@ section.page {
     width: auto;
     height: 100%;
     overflow-y: scroll;
+    white-space: normal;
+    padding: 15px 0 $gutter 1rem;
   }
 }
 
 @media screen and (min-width: 768px) {
   section.page {
+    display: flex;
+    width: auto;
+    max-width: 800px;
     @media (hover: hover) {
       &:not(.open):hover {
         cursor: pointer;
@@ -62,6 +93,7 @@ section.page {
     .content {
       width: 0;
       overflow: hidden;
+      padding: 0;
       & > * {
         opacity: 0;
         transition: 0.5s opacity;
@@ -77,11 +109,5 @@ section.page {
         padding: 0 $gutter 0 0;
       }
     }
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .pages {
-    max-width: 50vw;
   }
 }

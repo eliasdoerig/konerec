@@ -24,6 +24,7 @@ function Artist({
           width={400}
           height={600}
           layout="responsive"
+          loading="lazy"
         />
       </div>
       <div className="details">
@@ -54,12 +55,13 @@ function Artist({
                   toIdTrack(release.id);
                 }}
               >
-                <img
-                  src={`${release.cover.url}?fm=webp&w=100&h=100`}
+                <Image
+                  src={`https:${release.cover.url}?fm=webp&w=100&h=100`}
                   title={release.cover.title}
                   alt={release.cover.alt}
                   width={100}
                   height={100}
+                  layout="responsive"
                   loading="lazy"
                 />
               </li>

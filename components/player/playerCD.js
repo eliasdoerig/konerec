@@ -24,7 +24,7 @@ export default function PlayerCD({ trackCover, isPlaying }) {
       </div>
       <div ref={songCover} className="song-cover">
         <Image
-          src={`https:${trackCover.url}?fm=webp&w=1000&h=1000&q=70`}
+          src={`https:${trackCover.url}?fm=jpg&fl=progressive&w=1000&h=1000&q=70`}
           title={trackCover.title}
           alt={trackCover.alt}
           height={1000}

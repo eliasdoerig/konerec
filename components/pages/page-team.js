@@ -28,6 +28,7 @@ export default function PageTeam({ team }) {
                     width={400}
                     height={400}
                     layout="responsive"
+                    loading="lazy"
                   />
                 </div>
                 <div className="details">

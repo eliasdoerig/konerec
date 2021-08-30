@@ -1,6 +1,5 @@
 section#page-player {
-  flex: 1;
-  width: 100%;
+  width: 95vw;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -14,7 +13,6 @@ section#page-player {
     top: 0;
     left: 0;
     h1 {
-      font-size: 1.618rem;
       position: absolute;
       top: -10px;
       left: 7px;
@@ -30,10 +28,7 @@ section#page-player {
   }
   .song-cover {
     position: relative;
-    height: calc(100vmin - 105px);
-    width: calc(100vmin - 105px);
-    border-radius: 100%;
-    background: white;
+    width: 100vmin;
     animation: rotate 6s infinite linear;
     animation-play-state: paused;
   }
@@ -64,5 +59,17 @@ section#page-player {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  section#page-player {
+    width: 100%;
+    display: flex;
+
+    .song-cover {
+      height: calc(100vmin - 105px);
+      width: calc(100vmin - 105px);
+    }
   }
 }

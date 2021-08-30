@@ -1,5 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import PlayerHeader from "./playerHeader";
+import Image from "next/image";
 
 export default function Player({
   tracks,
@@ -96,12 +97,13 @@ export default function Player({
                     audioControls.toIdTrack(track.id);
                   }}
                 >
-                  <img
-                    src={`${track.cover.url}?fm=webp&w=100&h=100`}
+                  <Image
+                    src={`https:${track.cover.url}?fm=webp&w=100&h=100`}
                     title={track.cover.title}
                     alt={track.cover.alt}
                     width={100}
                     height={100}
+                    layout="responsive"
                     loading="lazy"
                   />
                 </li>

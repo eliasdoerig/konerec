@@ -9,7 +9,7 @@
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  // scroll-snap-type: x mandatory;
 }
 
 @media screen and (min-width: 768px) {
@@ -36,9 +36,9 @@
 section.page,
 div.page {
   position: sticky;
-  scroll-snap-align: start;
+  // scroll-snap-align: start;
   // -webkit-overflow-scrolling: touch;
-  left: calc(-100vw + #{$mobile-gap});
+  left: 0;
   display: inline-flex;
   vertical-align: top;
   width: calc(100vw - #{$mobile-gap});
@@ -127,6 +127,6 @@ div.page {
     }
   }
   .player-placeholder {
-    display: none;
+    display: none !important;
   }
 }

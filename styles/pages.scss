@@ -2,7 +2,7 @@
   position: fixed;
   width: 100%;
   height: calc(100% - #{$player-height});
-  padding-left: 95vw;
+  padding-left: calc(100vw - #{$mobile-gap});
   right: 0;
   top: 0;
   left: 0;
@@ -32,10 +32,10 @@
 
 section.page {
   position: sticky;
-  left: -95vw;
+  left: calc(-100vw + #{$mobile-gap});
   display: inline-flex;
   vertical-align: top;
-  width: 95vw;
+  width: calc(100vw - #{$mobile-gap});
   height: 100%;
   padding-left: 42px;
   transition: 0.25s;
@@ -43,6 +43,10 @@ section.page {
   box-shadow: 2rem 0 0 var(--bg);
   overflow-x: hidden;
   overflow-y: scroll;
+  &:last-child {
+    left: -100vw;
+    width: 100vw;
+  }
   //head with title
   a.head {
     border-left: solid 1px var(--line);

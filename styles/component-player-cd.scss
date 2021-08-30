@@ -1,5 +1,5 @@
 section#page-player {
-  width: 95vw;
+  width: calc(100vw - #{$mobile-gap});
   height: 100%;
   display: flex;
   justify-content: center;

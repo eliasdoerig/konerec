@@ -79,6 +79,7 @@ export default function Index({ pages, artists, tracks, team }) {
       <div className="main-top">
         <PlayerCD trackCover={tracks[trackIndex].cover} isPlaying={isPlaying} />
         <div className="pages">
+          <div className="player-placeholder page"></div>
           <PageArtists
             artists={artists}
             tracks={tracks}

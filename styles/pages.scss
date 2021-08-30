@@ -10,6 +10,7 @@
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
+  scroll-snap-type: x mandatory;
 }
 
 @media screen and (min-width: 768px) {
@@ -33,8 +34,11 @@
   }
 }
 
-section.page {
+section.page,
+div.page {
   position: sticky;
+  scroll-snap-align: start;
+  -webkit-overflow-scrolling: touch;
   left: calc(-100vw + #{$mobile-gap});
   display: inline-flex;
   vertical-align: top;
@@ -48,7 +52,6 @@ section.page {
   overflow-y: scroll;
   @media screen and (max-width: 767px) {
     &:last-child {
-      left: -100vw;
       width: 100vw;
     }
   }
@@ -87,6 +90,10 @@ section.page {
   }
 }
 
+.player-placeholder {
+  visibility: hidden;
+}
+
 @media screen and (min-width: 768px) {
   section.page {
     display: flex;
@@ -119,5 +126,8 @@ section.page {
         padding: 0 $gutter 0 0;
       }
     }
+  }
+  .player-placeholder {
+    display: none;
   }
 }

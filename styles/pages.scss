@@ -10,7 +10,7 @@
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  //scroll-snap-type: x mandatory;
 }
 
 @media screen and (min-width: 768px) {
@@ -37,8 +37,8 @@
 section.page,
 div.page {
   position: sticky;
-  scroll-snap-align: start;
-  -webkit-overflow-scrolling: touch;
+  // scroll-snap-align: start;
+  // -webkit-overflow-scrolling: touch;
   left: calc(-100vw + #{$mobile-gap});
   display: inline-flex;
   vertical-align: top;

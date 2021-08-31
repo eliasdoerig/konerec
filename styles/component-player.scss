@@ -10,6 +10,7 @@ section#player {
   &.open {
     box-shadow: 0 0 300px var(--light);
     top: 25%;
+    bottom: 0;
     @media screen and (min-width: 768px) {
       top: 50%;
     }

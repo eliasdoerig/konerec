@@ -21,7 +21,12 @@ export default function PlayerHeader({
     setTouchEnd(e.targetTouches[0].clientY);
   }
 
+  function handleClick() {
+    toggle(!isOpen);
+  }
+
   function handleTouchEnd() {
+    console.log(touchStart, touchEnd);
     if (touchStart - touchEnd > 150 && !isOpen) {
       // swipe down
       toggle(true);
@@ -30,9 +35,11 @@ export default function PlayerHeader({
       // swipe up
       toggle(false);
     }
-  }
-  function handleClick() {
-    toggle(!isOpen);
+    if (touchEnd == 0) {
+      handleClick();
+    }
+    setTouchStart(0);
+    setTouchEnd(0);
   }
 
   return (
@@ -50,7 +57,6 @@ export default function PlayerHeader({
       <div
         className="song"
         style={{ flex: 1 }}
-        onClick={() => handleClick()}
         onTouchStart={(touchStartEvent) => handleTouchStart(touchStartEvent)}
         onTouchMove={(touchMoveEvent) => handleTouchMove(touchMoveEvent)}
         onTouchEnd={() => handleTouchEnd()}

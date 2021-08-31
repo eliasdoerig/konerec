@@ -90,6 +90,7 @@ section#player {
   }
 
   .player-bottom {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: calc(75vh - #{$player-height});
@@ -101,6 +102,7 @@ section#player {
       flex-direction: column;
       padding: $gutter;
       flex: 1;
+      overflow-y: scroll;
       @media screen and (min-width: 768px) {
         flex-direction: row;
         .description {
@@ -109,11 +111,11 @@ section#player {
         }
         .lyrics {
           width: 50%;
+          line-height: 1.25;
         }
       }
     }
     .latest-release {
-      position: sticky;
       bottom: 0;
       border-top: solid 1px var(--line);
       padding: 1rem $gutter $gutter;

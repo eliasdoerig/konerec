@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function PlayerHeader({
   toggle,
@@ -8,6 +8,33 @@ export default function PlayerHeader({
   audioControls,
 }) {
   const { artist, title } = track;
+
+  //states
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  //Touch
+  function handleTouchStart(e) {
+    setTouchStart(e.targetTouches[0].clientY);
+  }
+
+  function handleTouchMove(e) {
+    setTouchEnd(e.targetTouches[0].clientY);
+  }
+
+  function handleTouchEnd() {
+    if (touchStart - touchEnd > 150 && !isOpen) {
+      // swipe down
+      toggle(true);
+    }
+    if (touchStart - touchEnd < -150 && isOpen) {
+      // swipe up
+      toggle(false);
+    }
+  }
+  function handleClick() {
+    toggle(!isOpen);
+  }
+
   return (
     <>
       <button
@@ -23,9 +50,10 @@ export default function PlayerHeader({
       <div
         className="song"
         style={{ flex: 1 }}
-        onClick={() => {
-          toggle(!isOpen);
-        }}
+        onClick={() => handleClick()}
+        onTouchStart={(touchStartEvent) => handleTouchStart(touchStartEvent)}
+        onTouchMove={(touchMoveEvent) => handleTouchMove(touchMoveEvent)}
+        onTouchEnd={() => handleTouchEnd()}
       >
         <span className="song-title">{title}</span>
         <span className="band-name">{artist}</span>

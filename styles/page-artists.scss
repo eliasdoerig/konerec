@@ -13,23 +13,26 @@ section#page-artists {
     display: flex;
     flex-direction: column;
     border-top: solid 1px var(--line);
-    padding: 0.5rem 0 1rem;
+    padding: $gutter 0 0;
+    margin-bottom: #{$gutter / 2};
+
     .image {
+      max-width: 400px;
+      flex-basis: 200px;
+      flex-shrink: 1;
       display: block;
-      width: 100%;
       margin: 0 $gutter $gutter 0;
-      padding: 0 0.5rem 0 0;
-      object-fit: contain;
-      object-position: top;
     }
     .details {
+      flex: 1;
       padding: 0 0.5rem 0 0;
     }
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1112px) {
     .artist {
       flex-direction: row;
       .image {
+        flex: auto;
         padding: 0;
         margin: 0 $gutter 0 0;
       }

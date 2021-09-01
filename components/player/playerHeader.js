@@ -9,37 +9,45 @@ export default function PlayerHeader({
 }) {
   const { artist, title } = track;
 
-  //states
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
+  //Refs
+  const touchStart = useRef(0);
+  const touchEnd = useRef(0);
+
   //Touch
   function handleTouchStart(e) {
-    setTouchStart(e.targetTouches[0].clientY);
+    touchStart.current = e.targetTouches[0].clientY;
   }
 
   function handleTouchMove(e) {
-    setTouchEnd(e.targetTouches[0].clientY);
+    touchEnd.current = e.targetTouches[0].clientY;
   }
 
   function handleClick() {
     toggle(!isOpen);
+    console.log("on click");
   }
 
   function handleTouchEnd() {
-    console.log(touchStart, touchEnd);
-    if (touchStart - touchEnd > 150 && !isOpen) {
-      // swipe down
+    // swipe up
+    if (
+      touchStart.current - touchEnd.current > 150 &&
+      touchEnd.current != 0 &&
+      !isOpen
+    ) {
       toggle(true);
+      console.log("swipe up");
     }
-    if (touchStart - touchEnd < -150 && isOpen) {
-      // swipe up
+    // swipe down
+    if (
+      touchStart.current - touchEnd.current < -150 &&
+      touchEnd.current != 0 &&
+      isOpen
+    ) {
       toggle(false);
+      console.log("swipe down");
     }
-    if (touchEnd == 0) {
-      handleClick();
-    }
-    setTouchStart(0);
-    setTouchEnd(0);
+    touchStart.current = 0;
+    touchEnd.current = 0;
   }
 
   return (
@@ -60,6 +68,7 @@ export default function PlayerHeader({
         onTouchStart={(touchStartEvent) => handleTouchStart(touchStartEvent)}
         onTouchMove={(touchMoveEvent) => handleTouchMove(touchMoveEvent)}
         onTouchEnd={() => handleTouchEnd()}
+        onClick={() => handleClick()}
       >
         <span className="song-title">{title}</span>
         <span className="band-name">{artist}</span>

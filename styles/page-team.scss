@@ -5,13 +5,13 @@ section#page-team {
       display: flex;
       flex-direction: column;
       border-top: solid 1px var(--line);
-      padding-top: 0.5rem;
-      margin-bottom: 0;
+      padding-top: $gutter;
+      margin-bottom: #{$gutter / 2};
       .image {
         width: 200px;
         object-fit: contain;
         object-position: top;
-        padding-bottom: 0.5rem;
+        padding-bottom: $gutter;
       }
       .details {
         flex: 1;
@@ -21,7 +21,7 @@ section#page-team {
   @media screen and (min-width: 1113px) {
     ul.team > li {
       flex-direction: row;
-      margin-bottom: 2rem;
+
       .image {
         padding-right: 1rem;
       }

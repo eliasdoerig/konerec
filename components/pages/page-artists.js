@@ -18,11 +18,11 @@ function Artist({
     <li className="artist">
       <div className="image">
         <Image
-          src={`https:${image.url}?fm=webp&fit=fill&w=400&h=600&q=75`}
+          src={`https:${image.url}?fm=webp&fit=fill&w=400&h=500&q=75`}
           title={image.title}
           alt={image.alt}
           width={400}
-          height={600}
+          height={500}
           layout="responsive"
           loading="lazy"
         />

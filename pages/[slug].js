@@ -192,8 +192,8 @@ export async function getStaticProps({ params }) {
         title: track.fields.cover.fields.title || track.fields.title,
         alt: track.fields.cover.fields.description || "",
       },
-      description: track.fields.description,
-      lyrics: track.fields.lyrics,
+      description: track.fields.description || "",
+      lyrics: track.fields.lyrics || "",
       links: [{ title: "Bandcamp", url: "#" }],
     };
   });

@@ -1,4 +1,5 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import PlayerHeader from "./playerHeader";
 import Image from "next/image";
 
@@ -90,7 +91,12 @@ export default function Player({
       <div className="player-bottom">
         <div className="song-details">
           <div className="description">
-            <p>{description}</p>
+            <h2>About</h2>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: documentToHtmlString(description),
+              }}
+            ></div>
             <ul className="links">
               {links.map((link, i) => {
                 return (
@@ -105,7 +111,11 @@ export default function Player({
           </div>
           <div className="lyrics">
             <h2>Lyrics</h2>
-            <p>{lyrics}</p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: documentToHtmlString(lyrics),
+              }}
+            ></div>
           </div>
         </div>
         <div className="latest-release">

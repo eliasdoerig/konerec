@@ -135,15 +135,18 @@ ul.links li {
 }
 //releases
 * + ul.releases {
-  margin: 0.75rem 0 0;
-}
-ul.releases h3 {
-  margin: 0 0 0.75rem;
+  margin: 0.5rem 0 0;
 }
 ul.releases li {
   list-style-type: none;
   display: inline-block;
   margin-right: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  * + ul.releases {
+    margin: 0.75rem 0 0;
+  }
 }
 
 //buttons

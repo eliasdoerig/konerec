@@ -12,6 +12,7 @@ section#player {
   background: var(--bg);
   transition: all 1s ease-in-out;
   //safari flickering
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
   &.open {
@@ -66,7 +67,7 @@ section#player {
       }
       .band-name {
         margin-left: 0.5rem;
-        color: var(--gray);
+        color: var(--line);
         letter-spacing: 0.05ch;
       }
     }
@@ -107,18 +108,17 @@ section#player {
       padding: $gutter;
       flex: 1;
       overflow-y: scroll;
-      .description {
-      }
       .lyrics {
         p + * {
           margin-top: 0.1rem;
+        }
+        .current {
+          font-weight: 800;
         }
       }
       @media screen and (min-width: 768px) {
         flex-direction: row;
         .description {
-          // position: sticky;
-          // top: 0;
           width: 25%;
           margin-right: $gutter;
         }

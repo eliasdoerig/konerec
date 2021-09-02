@@ -25,7 +25,7 @@ export default function Footer() {
       </ul>
       <p className="copyright">
         <span>©</span>
-        {year()} K1record
+        {year()} K1records
       </p>
     </footer>
   );

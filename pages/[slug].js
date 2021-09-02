@@ -16,7 +16,7 @@ import PlayerCD from "../components/player/playerCD";
 import Player from "../components/player/player";
 
 export default function Index({ pages, artists, tracks, team }) {
-  console.log("pages", pages);
+  //console.log("pages", pages);
   //page title
   const [currentTitle, setCurrentTitle] = useState("");
 

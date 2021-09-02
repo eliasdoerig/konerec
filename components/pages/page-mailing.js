@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Footer from "../footer/footer";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import NewsletterForm from "../NewsletterForm/NewsletterForm";
+import Footer from "../footer/footer";
 
 export default function PageMailing({ content }) {
   const router = useRouter();
@@ -24,11 +25,7 @@ export default function PageMailing({ content }) {
             }}
           ></div>
           <br />
-          <form>
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email"></input>
-            <button type="submit">Submit</button>
-          </form>
+          <NewsletterForm />
         </div>
         <Footer />
       </div>

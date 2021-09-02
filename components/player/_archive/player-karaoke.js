@@ -2,6 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import PlayerHeader from "./playerHeader";
 import Image from "next/image";
+import karaokeLyrics from "../../data/lyrics";
 
 export default function Player({
   tracks,
@@ -12,6 +13,7 @@ export default function Player({
 }) {
   //states
   const [isOpen, toggle] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
 
   //references
   const progressBar = useRef(null);
@@ -111,11 +113,27 @@ export default function Player({
           </div>
           <div className="lyrics">
             <h2>Lyrics</h2>
-            <div
+            {/* <div
               dangerouslySetInnerHTML={{
                 __html: documentToHtmlString(lyrics),
               }}
-            ></div>
+            ></div> */}
+            <div>
+              {karaokeLyrics.map((l, i) => {
+                return (
+                  <p
+                    key={`l-${i}`}
+                    className={
+                      currentTime > l.start && currentTime < l.end
+                        ? "current"
+                        : ""
+                    }
+                  >
+                    {l.string}
+                  </p>
+                );
+              })}
+            </div>
           </div>
         </div>
         <div className="latest-release">

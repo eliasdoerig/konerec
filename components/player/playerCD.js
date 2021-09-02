@@ -18,7 +18,7 @@ export default function PlayerCD({ trackCover, isPlaying }) {
       <div className="title">
         <h1>
           <Link href="/" shallow>
-            <span>Know 1 record</span>
+            <span>Know 1 records</span>
           </Link>
         </h1>
       </div>

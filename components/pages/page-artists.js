@@ -33,7 +33,12 @@ function Artist({
           {links.map((link, i) => {
             return (
               <li key={`link-${i}`}>
-                <a href={link.href} className="button">
+                <a
+                  href={link.url}
+                  className="button"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {link.title}
                 </a>
               </li>

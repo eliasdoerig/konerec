@@ -120,6 +120,7 @@ section#player {
         flex-direction: row;
         .description {
           width: 25%;
+          max-width: 350px;
           margin-right: $gutter;
         }
         .lyrics {

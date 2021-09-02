@@ -124,11 +124,14 @@ div.page {
       }
     }
     &.open .content {
-      width: auto;
+      width: 100vw;
       overflow-y: scroll;
       padding: 15px 0 $gutter 2rem;
       & > * {
         opacity: 1;
+      }
+      p {
+        max-width: 500px;
       }
     }
   }

@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import classes from "./NewsletterForm.module.scss";
 
 function NewsletterForm() {
   const emailInputRef = useRef();
@@ -51,7 +52,7 @@ function NewsletterForm() {
         />
         <button type="submit">Submit</button>
       </form>
-      <p className="message">{message}</p>
+      <p className={classes.message}>{message}</p>
     </>
   );
 }

@@ -45,7 +45,11 @@ export default function PageTeam({ team }) {
 
                     {member.website ? (
                       <li>
-                        <a href={member.website}>
+                        <a
+                          href={member.website}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           {member.website.replace(/(^\w+:|^)\/\//, "")}
                         </a>
                       </li>

@@ -28,6 +28,12 @@ function NewsletterForm() {
         } else if (data.result.result === "success") {
           setMessage("Success! Thank you for subscribing");
         }
+      })
+      .catch((error) => {
+        console.error(error);
+        setMessage(
+          "Unfortunately something went wrong. Please try again later!"
+        );
       });
   }
 
@@ -45,7 +51,7 @@ function NewsletterForm() {
         />
         <button type="submit">Submit</button>
       </form>
-      <p>{message}</p>
+      <p className="message">{message}</p>
     </>
   );
 }

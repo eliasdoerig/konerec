@@ -16,23 +16,27 @@ export default (req, res) => {
         },
       ],
     });
+    const key = Buffer.from(`${process.env.INFOMANIAK_API_SECRET}`).toString(
+      "base64"
+    );
 
-    console.log(body);
     fetch(
       `https://newsletter.infomaniak.com/api/v1/public/mailinglist/${id}/importcontact`,
       {
         method: "POST",
         body,
         headers: {
-          Authorization: `Basic dHQwYWc/Icc9EK/fJsDG7QjJFHD6m8BZofDjaI+VGNklHe6AEv5cU/S5p/4/S4Egr0+8KUmL+IVuzHPn:$2y$10$fcjmy4XCNZ4vjXsnO6/ptuWIhsGnYLD0x.4hc.TGkve7wdDkM6mJe`,
+          Authorization: `Basic ${key}`,
           "Content-Type": "application/json",
         },
       }
     )
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        res.status(201).json({ data: data });
+      .then((result) => {
+        res.status(201).json({ result });
+      })
+      .catch((error) => {
+        res.status(400).json({ error });
       });
   }
 };

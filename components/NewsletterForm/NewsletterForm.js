@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 function NewsletterForm() {
-  const emailInputRef = useRef("");
+  const emailInputRef = useRef();
+  const [message, setMessage] = useState("");
 
   function registrationHandler(event) {
     event.preventDefault();
@@ -18,22 +19,34 @@ function NewsletterForm() {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data.result);
+        if (data.result.result === "error") {
+          setMessage(
+            "Unfortunately something went wrong. Please try again later!"
+          );
+        } else if (data.result.result === "success") {
+          setMessage("Success! Thank you for subscribing");
+        }
+      });
   }
 
   return (
-    <form onSubmit={registrationHandler}>
-      <label htmlFor="email">Email</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        aria-label="Your email"
-        required
-        ref={emailInputRef}
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <form onSubmit={registrationHandler}>
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          aria-label="Your email"
+          required
+          ref={emailInputRef}
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <p>{message}</p>
+    </>
   );
 }
 

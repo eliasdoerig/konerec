@@ -6,7 +6,7 @@ section#page-team {
       flex-direction: column;
       border-top: solid 1px var(--line);
       padding-top: $gutter;
-      margin-bottom: #{$gutter / 2};
+      margin-bottom: calc(#{$gutter} / 2);
       .image {
         width: 200px;
         object-fit: contain;

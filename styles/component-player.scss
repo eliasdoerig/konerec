@@ -54,13 +54,16 @@ section#player {
       &.pause {
         background: url("/icons/pause.svg") no-repeat;
       }
+      &:focus {
+        outline: 0;
+      }
     }
     .song {
       height: 100%;
       display: flex;
       align-items: center;
       padding-bottom: 0.15rem;
-      cursor: pointer;
+      cursor: cell;
       .song-title {
         font-weight: 800;
         margin-left: 0.5rem;
@@ -86,6 +89,9 @@ section#player {
       width: 24px;
       height: 24px;
       margin-right: 0.5rem;
+      &:focus {
+        outline: 0;
+      }
     }
     #next {
       background: url("/icons/next.svg") no-repeat;
@@ -94,6 +100,9 @@ section#player {
       border-radius: 0;
       width: 24px;
       height: 24px;
+      &:focus {
+        outline: 0;
+      }
     }
   }
 

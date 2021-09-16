@@ -60,14 +60,14 @@ div.page {
     height: 100%;
     width: auto;
     min-width: 100px;
-    cursor: pointer;
+    cursor: url(../public/icons/cursor.png) 8 0, auto;
     position: absolute;
     top: 0;
     left: 0;
     color: var(--light);
     h1 {
       position: absolute;
-      top: -10px;
+      top: -12px;
       left: 5px;
       white-space: nowrap;
       transform: rotate(90deg);
@@ -123,6 +123,10 @@ div.page {
         transition-delay: 0.25s;
       }
     }
+    // &.open a.head h1 {
+    //   bottom: 600px;
+    //   transition: 0.5s;
+    // }
     &.open .content {
       width: 100vw;
       overflow-y: scroll;

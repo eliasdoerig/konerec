@@ -1,7 +1,18 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { INLINES } from "@contentful/rich-text-types";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import PlayerHeader from "./playerHeader";
 import Image from "next/image";
+
+const options = {
+  renderNode: {
+    [INLINES.HYPERLINK]: (node, next) => {
+      return `<a href="${
+        node.data.uri
+      }" target="_blank" rel="noopener noreferrer">${next(node.content)}</a>`;
+    },
+  },
+};
 
 export default function Player({
   tracks,
@@ -14,7 +25,7 @@ export default function Player({
   const [isOpen, toggle] = useState(false);
 
   //references
-  const progressBar = useRef(null);
+  const progressBar = useRef();
   const animationRef = useRef();
   const isReady = useRef(false);
 
@@ -38,8 +49,35 @@ export default function Player({
     requestAnimationFrame(animation);
   };
 
+  const onKeyPressed = (e) => {
+    if (e.keyCode == 32) {
+      audioControls.playPause();
+    }
+    if (e.keyCode == 39) {
+      audioControls.toNextTrack();
+    }
+    if (e.keyCode == 37) {
+      audioControls.toPrevTrack();
+    }
+  };
+
+  //Change track
+  useLayoutEffect(() => {
+    console.log("—— useeffect change track");
+    if (audioRef.current !== null && isPlaying) {
+      audioControls.pause();
+    }
+    loadAudio(audioSrc);
+    if (isReady.current && isPlaying) {
+      audioControls.play();
+    } else {
+      isReady.current = true;
+    }
+  }, [trackIndex]);
+
   //Mount
   useEffect(() => {
+    console.log("—— useeffect mount");
     loadAudio(audioSrc);
 
     // Pause and clean on unmount
@@ -52,8 +90,16 @@ export default function Player({
     };
   }, []);
 
-  //progress bar animation
   useEffect(() => {
+    window.addEventListener("keydown", onKeyPressed);
+    return () => {
+      window.removeEventListener("keydown", onKeyPressed);
+    };
+  }, [onKeyPressed]);
+
+  //Progress bar animation
+  useEffect(() => {
+    console.log("—— useeffect playing");
     if (isPlaying) {
       animationRef.current = requestAnimationFrame(animation);
       console.log("startani");
@@ -63,22 +109,11 @@ export default function Player({
     }
   }, [isPlaying, isReady]);
 
-  //change track
-  useLayoutEffect(() => {
-    if (audioRef.current !== null) {
-      audioControls.pause();
-    }
-    loadAudio(audioSrc);
-    if (isReady.current) {
-      audioControls.play();
-    } else {
-      isReady.current = true;
-    }
-  }, [trackIndex]);
-
   return (
     <section id="player" className={isOpen ? "open" : ""}>
+      {/*Progress bar*/}
       <div ref={progressBar} id="progressBar"></div>
+      {/*Player header*/}
       <div className="player-top">
         <PlayerHeader
           isOpen={isOpen}
@@ -89,6 +124,7 @@ export default function Player({
         />
       </div>
       <div className="player-bottom">
+        {/*Song details*/}
         <div className="song-details">
           <div className="description">
             <h2>About</h2>
@@ -97,17 +133,12 @@ export default function Player({
                 __html: documentToHtmlString(description),
               }}
             ></div>
-            <ul className="links">
-              {links.map((link, i) => {
-                return (
-                  <li key={`songlink-${i}`}>
-                    <a className="button" href={link.url}>
-                      {link.title}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+            <div
+              className="links"
+              dangerouslySetInnerHTML={{
+                __html: documentToHtmlString(links, options),
+              }}
+            ></div>
           </div>
           <div className="lyrics">
             <h2>Lyrics</h2>
@@ -118,6 +149,7 @@ export default function Player({
             ></div>
           </div>
         </div>
+        {/*Latest Releases*/}
         <div className="latest-release">
           <h3>Latest Releases</h3>
           <ul className="releases">

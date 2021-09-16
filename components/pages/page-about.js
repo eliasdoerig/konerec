@@ -6,7 +6,6 @@ export default function PageAbout({ content }) {
   const router = useRouter();
   const slug = "about";
   const isCurrent = router.query.slug === slug;
-  console.log(content);
   return (
     <section id="page-about" className={`page ${isCurrent ? "open" : ""}`}>
       <Link href={isCurrent ? "/" : `/${slug}`} shallow>

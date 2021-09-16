@@ -52,6 +52,7 @@ export default function PlayerHeader({
 
   return (
     <>
+      {/*Play button*/}
       <button
         type="button"
         id="playpause"
@@ -62,6 +63,7 @@ export default function PlayerHeader({
       >
         {isPlaying ? "Pause" : "Play"}
       </button>
+      {/*Song details*/}
       <div
         className="song"
         style={{ flex: 1 }}
@@ -73,6 +75,7 @@ export default function PlayerHeader({
         <span className="song-title">{title}</span>
         <span className="band-name">{artist}</span>
       </div>
+      {/*Previous and next buttons*/}
       <button
         type="button"
         id="prev"

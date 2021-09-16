@@ -10,18 +10,32 @@ export default function Footer() {
     <footer className={classes.footer}>
       <ul className={classes.social}>
         <li>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+          <a href="https://youtube.com/" target="_blank" rel="noreferrer">
+            youtube
+          </a>
+        </li>
+        <li>
+          <a href="https://bandcamp.com/" target="_blank" rel="noreferrer">
+            bandcamp
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/k1rec/"
+            target="_blank"
+            rel="noreferrer"
+          >
             instagram
           </a>
         </li>
         <li>
-          <a href="https://facebook.com" target="_blank" rel="noreferrer">
-            facebook
+          <a href="https://tiktok.com/" target="_blank" rel="noreferrer">
+            tiktok
           </a>
         </li>
         <li>
-          <a href="https://bandcamp.com" target="_blank" rel="noreferrer">
-            bandcamp
+          <a href="https://facebook.com/" target="_blank" rel="noreferrer">
+            facebook
           </a>
         </li>
       </ul>

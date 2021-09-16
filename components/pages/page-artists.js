@@ -1,7 +1,18 @@
 import { useRouter } from "next/router";
+import { INLINES } from "@contentful/rich-text-types";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import Link from "next/link";
 import Image from "next/image";
 
+const options = {
+  renderNode: {
+    [INLINES.HYPERLINK]: (node, next) => {
+      return `<a href="${
+        node.data.uri
+      }" target="_blank" rel="noopener noreferrer">${next(node.content)}</a>`;
+    },
+  },
+};
 function Artist({
   id,
   name,
@@ -29,23 +40,13 @@ function Artist({
       </div>
       <div className="details">
         <h2>{name}</h2>
-        <ul className="links">
-          {links.map((link, i) => {
-            return (
-              <li key={`link-${i}`}>
-                <a
-                  href={link.url}
-                  className="button"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {link.title}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
         <p className="description">{description}</p>
+        <div
+          className="links"
+          dangerouslySetInnerHTML={{
+            __html: documentToHtmlString(links, options),
+          }}
+        ></div>
         <h3>Releases</h3>
         <ul className="releases">
           {releases.map((release, i) => {

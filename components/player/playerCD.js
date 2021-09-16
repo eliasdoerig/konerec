@@ -21,6 +21,7 @@ export default function PlayerCD({ trackCover, isPlaying }) {
             <span>Know 1 records</span>
           </Link>
         </h1>
+        <img src="/icons/logo.svg" />
       </div>
       <div ref={songCover} className="song-cover">
         <Image

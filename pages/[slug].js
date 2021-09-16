@@ -16,8 +16,7 @@ import PlayerCD from "../components/player/playerCD";
 import Player from "../components/player/player";
 
 export default function Index({ pages, artists, tracks, team }) {
-  //console.log("pages", pages);
-  //page title
+  //Page title
   const [currentTitle, setCurrentTitle] = useState("");
 
   //Audio player
@@ -27,11 +26,13 @@ export default function Index({ pages, artists, tracks, team }) {
 
   //Audio player controls
   const audioControls = {
-    play: function () {
+    play: () => {
+      console.log("▶");
       audioRef.current.play();
       setIsPlaying(true);
     },
     pause: () => {
+      console.log("▮▮");
       audioRef.current.pause();
       setIsPlaying(false);
     },
@@ -43,6 +44,7 @@ export default function Index({ pages, artists, tracks, team }) {
       }
     },
     toNextTrack: () => {
+      console.log("▶▶");
       if (trackIndex < tracks.length - 1) {
         setTrackIndex(trackIndex + 1);
       } else {
@@ -50,15 +52,24 @@ export default function Index({ pages, artists, tracks, team }) {
       }
     },
     toPrevTrack: () => {
-      if (trackIndex - 1 < 0) {
-        setTrackIndex(tracks.length - 1);
+      console.log("◀◀");
+      if (
+        audioRef.current.currentTime !== NaN &&
+        audioRef.current.currentTime > 5
+      ) {
+        audioRef.current.currentTime = 0;
       } else {
-        setTrackIndex(trackIndex - 1);
+        if (trackIndex - 1 < 0) {
+          setTrackIndex(tracks.length - 1);
+        } else {
+          setTrackIndex(trackIndex - 1);
+        }
       }
     },
     toIdTrack: (id) => {
       if (tracks[trackIndex].id !== id) {
         setTrackIndex(tracks.findIndex((track) => track.id === id));
+        setIsPlaying(true);
       } else {
         audioControls.playPause();
       }
@@ -68,6 +79,10 @@ export default function Index({ pages, artists, tracks, team }) {
   useEffect(() => {
     setCurrentTitle(words[getRandomInt(words.length)]);
   }, []);
+
+  useEffect(() => {
+    console.log("isPlaying", isPlaying);
+  }, [isPlaying]);
 
   return (
     <div>
@@ -173,7 +188,7 @@ export async function getStaticProps({ params }) {
         title: artist.fields.thumbnail.fields.title || artist.fields.name,
         alt: artist.fields.thumbnail.fields.description || "",
       },
-      links: [{ title: "Bandcamp", url: "#" }],
+      links: artist.fields.links || "",
     };
   });
   //TRACKS
@@ -188,13 +203,13 @@ export async function getStaticProps({ params }) {
       artist: track.fields.artist.fields.name,
       audioSrc: track.fields.audio.fields.file.url,
       cover: {
-        url: track.fields.cover.fields.file.url,
-        title: track.fields.cover.fields.title || track.fields.title,
-        alt: track.fields.cover.fields.description || "",
+        url: track?.fields?.cover?.fields?.file?.url,
+        title: track?.fields?.cover?.fields?.title || track.fields.title,
+        alt: track?.fields?.cover?.fields?.description || "",
       },
       description: track.fields.description || "",
       lyrics: track.fields.lyrics || "",
-      links: [{ title: "Bandcamp", url: "#" }],
+      links: track.fields.links || "",
     };
   });
   //TEAM

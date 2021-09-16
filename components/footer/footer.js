@@ -1,6 +1,6 @@
 import classes from "./Footer.module.scss";
 
-const Footer = () => {
+const Footer = function () {
   const year = function () {
     const d = new Date();
     const y = d.getFullYear();

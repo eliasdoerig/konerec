@@ -1,6 +1,6 @@
 import classes from "./Footer.module.scss";
 
-export default function Footer() {
+const Footer = () => {
   const year = function () {
     const d = new Date();
     const y = d.getFullYear();
@@ -45,4 +45,6 @@ export default function Footer() {
       </p>
     </footer>
   );
-}
+};
+
+export default Footer;

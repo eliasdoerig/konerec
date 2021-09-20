@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import classes from "./NewsletterForm.module.scss";
 
-function NewsletterForm() {
+const NewsletterForm = function () {
   const emailInputRef = useRef();
   const [message, setMessage] = useState("");
 
@@ -55,6 +55,6 @@ function NewsletterForm() {
       <p className={classes.message}>{message}</p>
     </>
   );
-}
+};
 
 export default NewsletterForm;

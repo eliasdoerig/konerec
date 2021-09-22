@@ -17,7 +17,7 @@ section#page-player {
     // left: -7px;
     // transform: rotate(-90deg);
     img {
-      height: 60px;
+      height: 55px;
       position: relative;
     }
     //desktop
@@ -31,6 +31,7 @@ section#page-player {
   .song-cover {
     position: relative;
     width: 100vmin;
+    margin-top: 30px; //optica adjustment
     animation: rotate 6s infinite linear;
     animation-play-state: paused;
   }
@@ -72,6 +73,7 @@ section#page-player {
     .song-cover {
       height: calc(100vmin - 105px);
       width: calc(100vmin - 105px);
+      margin-top: 0;
     }
 
     .title h1 {

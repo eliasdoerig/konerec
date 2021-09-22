@@ -206,14 +206,16 @@ button,
     transform: translate(-50%, -50%);
     font-size: 0;
     background: url("/icons/play.svg") no-repeat;
-    background-position: center;
+    background-position: 60% center;
     color: var(--light);
   }
   &.current:hover::after {
     background-image: url("/icons/pause.svg");
+    background-position: center;
   }
   &.current.pause:hover::after {
     background-image: url("/icons/play.svg");
+    background-position: 60% center;
   }
 }
 

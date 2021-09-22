@@ -20,13 +20,6 @@ export default function PlayerCD({ trackCover, isPlaying }) {
           <img src="/icons/logo.svg" />
         </Link>
       </div>
-      <div className="site-title">
-        <h1>
-          <Link href="/" shallow>
-            <span>Know 1 records</span>
-          </Link>
-        </h1>
-      </div>
       <div ref={songCover} className="song-cover">
         <Image
           src={`https:${trackCover.url}?fm=jpg&fl=progressive&w=1000&h=1000&q=70`}

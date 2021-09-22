@@ -45,10 +45,10 @@ section#player {
     #playpause {
       font-size: 0;
       border: 0;
-      height: 28px;
+      height: 30px;
       width: 26px;
       border-radius: 0;
-      margin-bottom: 0.125rem;
+      margin-bottom: 0.2rem;
       &.play {
         background: url("/icons/play.svg") no-repeat;
       }

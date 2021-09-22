@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { createClient } from "contentful";
 import { useState, useRef, useEffect } from "react";
 import { getRandomInt } from "../utils/utils";
@@ -95,6 +96,13 @@ export default function Index({ pages, artists, tracks, team }) {
         <PlayerCD trackCover={tracks[trackIndex].cover} isPlaying={isPlaying} />
         <div className="pages">
           <div className="player-placeholder page"></div>
+          <div className="site-title">
+            <h1>
+              <Link href="/" shallow>
+                <span>Know 1 records</span>
+              </Link>
+            </h1>
+          </div>
           <PageArtists
             artists={artists}
             tracks={tracks}

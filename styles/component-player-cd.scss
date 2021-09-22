@@ -10,7 +10,7 @@ section#page-player {
     z-index: 0;
     cursor: url(../public/icons/cursor.png) 8 0, auto;
     position: absolute;
-    display: none;
+    //display: none;
     top: $gutter;
     left: $gutter;
     // top: 38px;
@@ -26,20 +26,6 @@ section#page-player {
       img {
         height: 70px;
       }
-    }
-  }
-  .site-title {
-    cursor: url(../public/icons/cursor.png) 8 0, auto;
-    position: absolute;
-    top: calc(100% - 16px);
-    left: 0;
-    h1 {
-      position: absolute;
-      left: 8px;
-      white-space: nowrap;
-      transform: rotate(-90deg);
-      transform-origin: 0 0;
-      margin: 0;
     }
   }
   .song-cover {

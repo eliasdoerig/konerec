@@ -45,9 +45,10 @@ section#player {
     #playpause {
       font-size: 0;
       border: 0;
-      width: 32px;
-      height: 32px;
+      height: 28px;
+      width: 26px;
       border-radius: 0;
+      margin-bottom: 0.125rem;
       &.play {
         background: url("/icons/play.svg") no-repeat;
       }
@@ -88,7 +89,7 @@ section#player {
       border-radius: 0;
       width: 24px;
       height: 24px;
-      margin-right: 0.5rem;
+      margin: 0 0.4rem 0.125rem 0;
       &:focus {
         outline: 0;
       }
@@ -100,6 +101,7 @@ section#player {
       border-radius: 0;
       width: 24px;
       height: 24px;
+      margin: 0 0 0.125rem 0;
       &:focus {
         outline: 0;
       }
@@ -142,11 +144,30 @@ section#player {
       }
     }
     .latest-release {
+      position: relative;
       border-top: solid 1px var(--line);
       padding: 0.5rem $gutter 0.75rem;
       background: var(--bg);
+      overflow-x: visible;
       @media screen and (min-width: 768px) {
         padding: 1rem $gutter $gutter;
+      }
+      ul {
+        margin-left: -$gutter;
+        margin-right: -$gutter;
+        white-space: nowrap;
+        li:first-child {
+          margin-left: $gutter;
+        }
+        li:last-child {
+          margin-right: $gutter;
+        }
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
       }
     }
   }

@@ -100,7 +100,7 @@ export default function PageArtists({
         </a>
       </Link>
       <div className="content">
-        <p className="big">{content.intro}</p>
+        <p>{content.intro}</p>
         <ul className="artists">
           {artists.map((artist, i) => {
             return (

@@ -6,24 +6,40 @@ section#page-player {
   align-items: center;
   padding: $gutter;
   position: relative;
-
-  .title {
+  .logo {
+    z-index: 0;
     cursor: url(../public/icons/cursor.png) 8 0, auto;
     position: absolute;
-    top: 0;
+    display: none;
+    top: $gutter;
+    left: $gutter;
+    // top: 38px;
+    // left: -7px;
+    // transform: rotate(-90deg);
+    img {
+      height: 60px;
+      position: relative;
+    }
+    //desktop
+    @media screen and (min-width: 768px) {
+      //top: 42px;
+      img {
+        height: 70px;
+      }
+    }
+  }
+  .site-title {
+    cursor: url(../public/icons/cursor.png) 8 0, auto;
+    position: absolute;
+    top: calc(100% - 16px);
     left: 0;
     h1 {
       position: absolute;
-      top: -12px;
-      left: 7px;
+      left: 8px;
       white-space: nowrap;
-      transform: rotate(90deg);
-      transform-origin: 0 100%;
+      transform: rotate(-90deg);
+      transform-origin: 0 0;
       margin: 0;
-      span {
-        display: block;
-        transform: rotate(180deg);
-      }
     }
   }
   .song-cover {
@@ -70,6 +86,10 @@ section#page-player {
     .song-cover {
       height: calc(100vmin - 105px);
       width: calc(100vmin - 105px);
+    }
+
+    .title h1 {
+      right: 0;
     }
   }
 }

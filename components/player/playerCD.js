@@ -15,13 +15,17 @@ export default function PlayerCD({ trackCover, isPlaying }) {
 
   return (
     <section id="page-player" className="">
-      <div className="title">
+      <div className="logo">
+        <Link href="/" shallow>
+          <img src="/icons/logo.svg" />
+        </Link>
+      </div>
+      <div className="site-title">
         <h1>
           <Link href="/" shallow>
             <span>Know 1 records</span>
           </Link>
         </h1>
-        <img src="/icons/logo.svg" />
       </div>
       <div ref={songCover} className="song-cover">
         <Image

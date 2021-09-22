@@ -1,4 +1,4 @@
-$gutter: 20px;
+$gutter: 16px;
 $player-height: 60px;
 $mobile-gap: 23px;
 
@@ -73,6 +73,8 @@ h1 {
   font-size: 1.3rem;
   line-height: 1.2;
   font-weight: 700;
+  word-spacing: -0.15ch;
+  letter-spacing: -0.01ch;
   margin: 0;
 }
 
@@ -80,14 +82,15 @@ h2,
 h3 {
   font-size: 1rem;
   font-weight: 700;
-  line-height: $gutter;
+  line-height: 20px;
   margin: 0;
+  letter-spacing: 0.01ch;
 }
 
 p {
   font-size: 1rem;
   font-weight: 400;
-  line-height: $gutter;
+  line-height: 20px;
   margin: 0;
   letter-spacing: 0.01ch;
 }
@@ -98,12 +101,12 @@ p + * {
 
 .big {
   font-size: 1.2rem;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 @media screen and (min-width: 768px) {
   h1 {
-    font-size: 1.618rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin: 0;
   }

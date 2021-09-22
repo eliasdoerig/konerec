@@ -21,6 +21,10 @@ section#player {
     @media screen and (min-width: 768px) {
       top: 50%;
     }
+
+    .player-top .song {
+      cursor: url("/icons/close.svg") 0 0, cell;
+    }
   }
   #progressBar {
     position: absolute;
@@ -64,7 +68,7 @@ section#player {
       display: flex;
       align-items: center;
       padding-bottom: 0.15rem;
-      cursor: cell;
+      cursor: url("/icons/down.svg") 0 0, cell;
       .song-title {
         font-weight: 800;
         margin-left: 0.5rem;

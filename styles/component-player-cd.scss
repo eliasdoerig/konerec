@@ -17,11 +17,12 @@ section#page-player {
     // left: -7px;
     // transform: rotate(-90deg);
     img {
-      height: 55px;
+      height: 60px;
       position: relative;
     }
     //desktop
     @media screen and (min-width: 768px) {
+      left: 22px;
       //top: 42px;
       img {
         height: 75px;

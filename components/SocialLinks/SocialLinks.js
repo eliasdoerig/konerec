@@ -1,4 +1,4 @@
-import classes from "./Footer.module.scss";
+import classes from "./SocialLinks.module.scss";
 
 export default function Footer() {
   const year = function () {

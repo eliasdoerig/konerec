@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import NewsletterForm from "../NewsletterForm/NewsletterForm";
-import Footer from "../Footer/Footer";
+import SocialLinks from "../SocialLinks/SocialLinks";
 
 export default function PageMailing({ content }) {
   const router = useRouter();
@@ -27,7 +27,7 @@ export default function PageMailing({ content }) {
           <br />
           <NewsletterForm />
         </div>
-        <Footer />
+        <SocialLinks />
       </div>
     </section>
   );

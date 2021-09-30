@@ -31,7 +31,7 @@ export default function Player({
 
   // Destructure for conciseness
   const track = tracks[trackIndex];
-  const { audioSrc, description, lyrics, links } = track;
+  const { audioSrc, description, lyrics, links, download } = track;
 
   // Functions
   const loadAudio = (audioSrc) => {
@@ -139,6 +139,15 @@ export default function Player({
                 __html: documentToHtmlString(links, options),
               }}
             ></div>
+            {download ? (
+              <div className="download">
+                <a href={download} target="_blank" download>
+                  Download
+                </a>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
           <div className="lyrics">
             <h2>Lyrics</h2>

@@ -17,7 +17,11 @@ export default function PlayerCD({ trackCover, isPlaying }) {
     <section id="page-player" className="">
       <div className="logo">
         <Link href="/" shallow>
-          <img src="/icons/logo.svg" alt="Know 1 records" />
+          <img
+            src="/icons/logo.svg"
+            title="Know 1 records"
+            alt="Know 1 records"
+          />
         </Link>
       </div>
       <div ref={songCover} className="song-cover">

@@ -1,6 +1,6 @@
 import classes from "./Footer.module.scss";
 
-const Footer = function () {
+export default function Footer() {
   const year = function () {
     const d = new Date();
     const y = d.getFullYear();
@@ -29,11 +29,6 @@ const Footer = function () {
           </a>
         </li>
         <li>
-          <a href="https://tiktok.com/" target="_blank" rel="noreferrer">
-            tiktok
-          </a>
-        </li>
-        <li>
           <a href="https://facebook.com/" target="_blank" rel="noreferrer">
             facebook
           </a>
@@ -45,6 +40,4 @@ const Footer = function () {
       </p>
     </footer>
   );
-};
-
-export default Footer;
+}

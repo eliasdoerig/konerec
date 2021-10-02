@@ -22,7 +22,7 @@ export default function PageTeam({ team }) {
               <li key={`member-${i}`}>
                 <div className="image">
                   <Image
-                    src={`https:${member.image.url}?fm=webp&w=400&h=400&q=75`}
+                    src={`https:${member.image.url}?fm=webp&fit=fill&w=400&h=400&q=75`}
                     title={member.image.title}
                     alt={member.image.alt}
                     width={400}

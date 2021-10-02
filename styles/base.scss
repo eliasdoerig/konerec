@@ -135,6 +135,10 @@ li {
 }
 .links {
   list-style-type: none;
+  li {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
   a {
     margin: 0 0.5rem 0 0;
     display: inline-block;

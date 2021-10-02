@@ -19,8 +19,8 @@ export default function PlayerCD({ trackCover, isPlaying }) {
         <Link href="/" shallow>
           <img
             src="/icons/logo.svg"
-            title="Know 1 records"
-            alt="Know 1 records"
+            title="Know1 records"
+            alt="Know1 records"
           />
         </Link>
       </div>

@@ -89,7 +89,7 @@ export default function Index({ pages, artists, tracks, team }) {
           <div className="site-title">
             <h1>
               <Link href="/" shallow>
-                <span>Know 1 records</span>
+                <span>Know1 records</span>
               </Link>
             </h1>
           </div>

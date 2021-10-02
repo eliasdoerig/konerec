@@ -11,7 +11,7 @@ export default function PageTeam({ team }) {
       <Link href={isCurrent ? "/" : `/${slug}`} shallow>
         <a className="head">
           <h1>
-            <span>Know 1 works</span>
+            <span>Know1 works</span>
           </h1>
         </a>
       </Link>

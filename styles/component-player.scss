@@ -66,17 +66,34 @@ section#player {
     .song {
       height: 100%;
       display: flex;
-      align-items: center;
-      padding-bottom: 0.15rem;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 0.5rem 0.15rem;
       cursor: url("/icons/down.svg") 0 0, cell;
+      min-width: 0;
       .song-title {
         font-weight: 800;
-        margin-left: 0.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .band-name {
-        margin-left: 0.5rem;
         color: var(--line);
         letter-spacing: 0.05ch;
+      }
+    }
+    @media screen and (min-width: 768px) {
+      .song {
+        flex-direction: row;
+        align-items: center;
+        justify-content: initial;
+        padding: 0 0 0.15rem;
+        .song-title {
+          margin-left: 0.5rem;
+        }
+        .band-name {
+          margin-left: 0.5rem;
+        }
       }
     }
     .song-wave {
@@ -123,6 +140,9 @@ section#player {
       padding: $gutter;
       flex: 1;
       overflow-y: scroll;
+      .description {
+        margin-bottom: 2rem;
+      }
       .lyrics {
         p + * {
           margin-top: 0.1rem;

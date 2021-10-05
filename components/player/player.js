@@ -141,7 +141,7 @@ export default function Player({
             ></div>
             {download ? (
               <div className="download">
-                <a href={download} target="_blank" download>
+                <a href={download} target="_blank" rel="noreferrer" download>
                   Download
                 </a>
               </div>

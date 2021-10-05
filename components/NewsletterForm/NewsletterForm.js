@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import classes from "./NewsletterForm.module.scss";
 
 const NewsletterForm = function () {
@@ -28,6 +28,7 @@ const NewsletterForm = function () {
           );
         } else if (data.result.result === "success") {
           setMessage("Success! Thank you for subscribing");
+          emailInputRef.current.value = "";
         }
       })
       .catch((error) => {

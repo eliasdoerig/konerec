@@ -10,13 +10,21 @@ export default function Footer() {
     <footer className={classes.footer}>
       <ul className={classes.social}>
         <li>
-          <a href="https://youtube.com/" target="_blank" rel="noreferrer">
-            youtube
+          <a
+            href="https://mx3.ch/labels/know1records"
+            target="_blank"
+            rel="noreferrer"
+          >
+            mx3
           </a>
         </li>
         <li>
-          <a href="https://bandcamp.com/" target="_blank" rel="noreferrer">
-            bandcamp
+          <a
+            href="https://www.youtube.com/channel/UCEG9AVAZHK94C_2ETOkN4vg"
+            target="_blank"
+            rel="noreferrer"
+          >
+            youtube
           </a>
         </li>
         <li>
@@ -29,8 +37,12 @@ export default function Footer() {
           </a>
         </li>
         <li>
-          <a href="https://facebook.com/" target="_blank" rel="noreferrer">
-            facebook
+          <a
+            href="https://www.tiktok.com/@know1records"
+            target="_blank"
+            rel="noreferrer"
+          >
+            tiktok
           </a>
         </li>
       </ul>

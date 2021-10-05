@@ -144,7 +144,7 @@ div.page {
     &.open .content {
       width: 100vw;
       overflow-y: scroll;
-      padding: 15px 0 $gutter 2rem;
+      padding: 15px 0 $gutter 3rem;
       & > * {
         opacity: 1;
       }

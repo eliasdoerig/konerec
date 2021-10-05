@@ -144,8 +144,9 @@ section#player {
         margin-bottom: 2rem;
       }
       .lyrics {
-        p + * {
-          margin-top: 0.1rem;
+        > * {
+          white-space: pre-wrap;
+          white-space: break-spaces;
         }
         .current {
           font-weight: 800;

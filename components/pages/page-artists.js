@@ -29,10 +29,10 @@ function Artist({
     <li className="artist">
       <div className="image">
         <Image
-          src={`https:${image.url}?fm=webp&fit=fill&w=400&h=500&q=75`}
+          src={`https:${image.url}?fm=webp&fit=fill&w=500&h=500&q=75`}
           title={image.title}
           alt={image.alt}
-          width={400}
+          width={500}
           height={500}
           layout="responsive"
           loading="lazy"
@@ -47,7 +47,7 @@ function Artist({
             __html: documentToHtmlString(links, options),
           }}
         ></div>
-        <h3>Releases</h3>
+        {releases[0] ? <h3>Releases</h3> : ""}
         <ul className="releases">
           {releases.map((release, i) => {
             const isCurrent = release.id === tracks[trackIndex].id;

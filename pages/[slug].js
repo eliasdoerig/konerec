@@ -180,7 +180,7 @@ export async function getStaticProps({ params }) {
     return {
       id: artist.sys.id,
       name: artist.fields.name,
-      description: artist.fields.description,
+      description: artist.fields.description || "",
       image: {
         url: artist.fields.thumbnail.fields.file.url,
         title: artist.fields.thumbnail.fields.title || artist.fields.name,

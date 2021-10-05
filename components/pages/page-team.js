@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -33,7 +34,11 @@ export default function PageTeam({ team }) {
                 </div>
                 <div className="details">
                   <h2>{member.name}</h2>
-                  <p>{member.description}</p>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: documentToHtmlString(member.description),
+                    }}
+                  ></div>
                   <ul className="links">
                     {member.email ? (
                       <li>

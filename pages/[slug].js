@@ -218,7 +218,7 @@ export async function getStaticProps({ params }) {
   const team = teamRaw.map((member) => {
     return {
       name: member.fields.name,
-      description: member.fields.description,
+      description: member.fields.descriptionRichText || null,
       image: {
         url: member.fields.thumbnail.fields.file.url,
         title: member.fields.thumbnail.fields.title || member.fields.name,

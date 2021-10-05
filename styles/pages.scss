@@ -25,6 +25,7 @@
     padding-left: 0;
     overflow: visible;
     white-space: normal;
+    box-shadow: 0 0 60px var(--bg);
   }
 }
 @media screen and (min-width: 1024px) {
@@ -59,22 +60,28 @@ div.page {
     border-left: solid 1px var(--line);
     height: 100%;
     width: auto;
-    min-width: 100px;
     cursor: url(../public/icons/cursor.png) 8 0, auto;
     position: absolute;
     top: 0;
     left: 0;
     color: var(--light);
     text-decoration: none;
+    @media screen and (max-width: 767px) {
+      pointer-events: none;
+    }
     h1 {
       position: relative;
       top: -10px;
-      left: 7px;
+      left: 5px;
       white-space: nowrap;
       transform: rotate(90deg);
       transform-origin: 0 100%;
       //top: calc(100% - 16px);
       //margin: 0;
+      span {
+        display: block;
+        transform: rotate(180deg);
+      }
     }
   }
   //content
@@ -121,11 +128,19 @@ div.page {
         transition-delay: 0.25s;
       }
     }
-    // &.open a.head h1 {
-    //   transition: 0.75s;
-    //   top: 16px;
-    //   margin-top: 100%;
-    // }
+    a.head {
+      width: 70px;
+      h1 {
+        top: calc(100% - 14px);
+        left: 5px;
+        transform: rotate(-90deg);
+        transform-origin: 0 0;
+        margin: 0;
+        span {
+          display: initial;
+        }
+      }
+    }
     &.open .content {
       width: 100vw;
       overflow-y: scroll;

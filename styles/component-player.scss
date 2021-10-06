@@ -145,6 +145,8 @@ section#player {
       overflow-y: scroll;
       .description {
         margin-bottom: 2rem;
+        white-space: pre-wrap;
+        white-space: break-spaces;
       }
       .lyrics {
         > * {
@@ -160,7 +162,7 @@ section#player {
         .description {
           width: 25%;
           max-width: 350px;
-          margin-right: $gutter;
+          margin-right: 40px;
         }
         .lyrics {
           width: 50%;

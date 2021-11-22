@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { createClient } from "contentful";
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 
 //pages
 import PageArtists from "../components/pages/page-artists";
@@ -14,10 +15,12 @@ import PlayerCD from "../components/player/playerCD";
 import Player from "../components/player/player";
 
 export default function Index({ pages, artists, tracks, team }) {
+  const router = useRouter();
   //Audio player
   const audioRef = useRef(null);
   const [trackIndex, setTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlayerOpen, togglePlayer] = useState(false);
 
   //Audio player controls
   const audioControls = {
@@ -61,15 +64,25 @@ export default function Index({ pages, artists, tracks, team }) {
         }
       }
     },
-    toIdTrack: (id) => {
+    toIdTrack: (id, play = true) => {
+      console.log(`to id: ${id}`);
       if (tracks[trackIndex].id !== id) {
         setTrackIndex(tracks.findIndex((track) => track.id === id));
-        setIsPlaying(true);
-      } else {
+      }
+      if (tracks[trackIndex].id === id && play) {
         audioControls.playPause();
       }
     },
   };
+
+  useEffect(() => {
+    if (!router.query.track) return;
+    const t = tracks.filter((track) => track.slug === router.query.track)[0];
+    if (t) {
+      audioControls.toIdTrack(t.id, false);
+      togglePlayer(true);
+    }
+  }, [router.query]);
 
   useEffect(() => {
     console.log("isPlaying", isPlaying);
@@ -115,6 +128,8 @@ export default function Index({ pages, artists, tracks, team }) {
         setTrackIndex={setTrackIndex}
         audioControls={audioControls}
         audioRef={audioRef}
+        isPlayerOpen={isPlayerOpen}
+        togglePlayer={togglePlayer}
       />
     </div>
   );
@@ -193,9 +208,11 @@ export async function getStaticProps({ params }) {
   const tracksRaw = res.items.filter(
     (item) => item.sys.contentType.sys.id == "tracks"
   );
+  console.log(tracksRaw);
   const tracks = tracksRaw.map((track) => {
     return {
       id: track.sys.id,
+      slug: track.fields.slug,
       artistId: track.fields.artist.sys.id,
       title: track.fields.title,
       artist: track.fields.artist.fields.name,

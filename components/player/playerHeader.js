@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function PlayerHeader({
   toggle,
@@ -7,6 +8,7 @@ export default function PlayerHeader({
   isPlaying,
   audioControls,
 }) {
+  const router = useRouter();
   const { artist, title } = track;
 
   //Refs
@@ -24,6 +26,15 @@ export default function PlayerHeader({
 
   function handleClick() {
     toggle(!isOpen);
+    if (!isOpen) {
+      const current = router.query.slug;
+      console.log(current, router);
+      router.push({
+        pathname: router.asPath,
+        query: { track: track.slug },
+        shallow: true,
+      });
+    }
     console.log("on click");
   }
 

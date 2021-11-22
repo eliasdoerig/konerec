@@ -20,10 +20,9 @@ export default function Player({
   isPlaying,
   audioControls,
   audioRef,
+  isPlayerOpen,
+  togglePlayer,
 }) {
-  //states
-  const [isOpen, toggle] = useState(false);
-
   //references
   const progressBar = useRef();
   const animationRef = useRef();
@@ -69,7 +68,7 @@ export default function Player({
     }
     loadAudio(audioSrc);
     if (isReady.current && isPlaying) {
-      audioControls.play();
+      //audioControls.play();
     } else {
       isReady.current = true;
     }
@@ -110,14 +109,14 @@ export default function Player({
   }, [isPlaying, isReady]);
 
   return (
-    <section id="player" className={isOpen ? "open" : ""}>
+    <section id="player" className={isPlayerOpen ? "open" : ""}>
       {/*Progress bar*/}
       <div ref={progressBar} id="progressBar"></div>
       {/*Player header*/}
       <div className="player-top">
         <PlayerHeader
-          isOpen={isOpen}
-          toggle={toggle}
+          isOpen={isPlayerOpen}
+          toggle={togglePlayer}
           track={track}
           isPlaying={isPlaying}
           audioControls={audioControls}

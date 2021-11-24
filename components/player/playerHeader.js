@@ -27,11 +27,15 @@ export default function PlayerHeader({
   function handleClick() {
     toggle(!isOpen);
     if (!isOpen) {
-      const current = router.query.slug;
-      console.log(current, router);
       router.push({
         pathname: router.asPath,
         query: { track: track.slug },
+        shallow: true,
+      });
+    } else {
+      const path = router.query.slug === "home" ? "/" : `/${router.query.slug}`;
+      router.push({
+        pathname: path,
         shallow: true,
       });
     }

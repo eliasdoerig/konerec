@@ -8,6 +8,7 @@ export default function Footer() {
   };
   return (
     <footer className={classes.footer}>
+  {/*
       <ul className={classes.social}>
         <li>
           <a
@@ -46,6 +47,7 @@ export default function Footer() {
           </a>
         </li>
       </ul>
+      */}
       <p className={classes.copyright}>
         <span>©</span>
         {year()} K1records
